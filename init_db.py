@@ -23,6 +23,8 @@ def initialize_database():
             reply_id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT,
             description TEXT,
+            first_name TEXT,
+            last_name TEXT,
             post_id INTEGER,
             FOREIGN KEY (post_id) REFERENCES Posts (post_id)
         )
