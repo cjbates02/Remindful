@@ -1,0 +1,24 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <br />
+    {% for post in posts %}
+        <div class="container mt-5">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h2 class="card-title">{{post['title']}}</h2>
+                    <p class="card-text text-muted">Written by {{post['first_name']}} {{post['last_name']}}</p>
+                    <p class="card-text">{{ post['description'] }}</p>
+                    <form method="post" action="{{ url_for('reply', post_id=post['post_id']) }}">
+                        <button class="btn btn-primary" type="submit">Reply</button>
+                    </form>
+                    <br />
+                    <form method="post" action="{{ delete_post(post['post_id']) }}">
+                        <button class="btn btn-warning" type="submit">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

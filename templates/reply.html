@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Reply{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Blog Post -->
+    <div class="card mb-4">
+        <div class="card-body bg-light">
+            <h2 class="card-title">{{ post['title'] }}</h2>
+            <p class="card-text text-muted">Written by {{ post['first_name'] }} {{ post['last_name'] }}</p>
+            <p class="card-text">{{ post['description'] }}</p>
+        </div>
+    </div>
+
+    <!-- Replies -->
+    <h2 class="card-title">Discussion</h2>
+    {% for reply in replys %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <p class="card-text text-muted">Reply by {{ reply['first_name'] }} {{ reply['last_name'] }}</p>
+                <p class="card-text">{{ reply['description'] }}</p>
+                <form method="post" action="{{ delete_reply(reply['reply_id']) }}">
+                    <button class="btn btn-warning" type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
+    {% endfor %}
+
+        <!-- Write a Reply Form -->
+        <div class="card">
+            <div class="card-body bg-green">
+                <h1 class="mt-4 mb-4">Write a Reply</h1>
+
+                <form method="post" action="{{ url_for('reply', post_id=post['post_id']) }}">
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="first_name">First Name:</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reply_content">Your Reply:</label>
+                        <textarea class="form-control" id="reply_content" name="reply_content" rows="4" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit Reply</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</br>
+{% endblock %}
