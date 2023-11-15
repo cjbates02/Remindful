@@ -212,6 +212,11 @@ def view_posts():
     # Render the 'view_posts.html' template with the posts data
     return render_template('view_posts.html', posts=posts)
 
+@app.route('/helpful_info')
+def helpful_info():
+    return render_template('helpful_info.html')
 
 
+if __name__ == "__main__":
+    app.run(debug=True)
     

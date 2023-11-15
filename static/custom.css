@@ -13,3 +13,22 @@
 .bg-green {
   background-color: #E8E6D8
 }
+
+.tip-card {
+  background-color: #7EA4C2;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.tip-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.tip-card h4 {
+  color: #ffffff;
+  font-weight: bold;
+}
